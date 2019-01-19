@@ -1,6 +1,4 @@
-package com.jzf.sort;
-
-import java.util.ArrayList;
+package com.jzf.datastructure;
 
 /**
  *

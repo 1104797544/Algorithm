@@ -1,6 +1,10 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Array<Integer> array = new Array<>();
+        for (int i = 0; i <= 10; i++){
+            array.addFirst(i);
+        }
+        System.out.println(array);
     }
 }
