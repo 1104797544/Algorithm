@@ -5,14 +5,10 @@ import com.jzf.datastructure.Interface.Queue;
 import java.util.Date;
 
 /**
- * &lt;Description&gt; &lt;br&gt;
- *
- * @author JiaZhengfeng&lt;br&gt;
- * @version 1.0&lt;br&gt;
- * @taskId &lt;br&gt;
- * @CreateDate 2019/1/19 &lt;br&gt;
- * @see com.jzf.datastructure &lt;br&gt;
- * @since V9.0&lt;br&gt;
+ * @author JiaZhengfeng
+ * @version 1.0
+ * @see com.jzf.datastructure
+ * @CreateDate 2019/1/20
  */
 public class LoopQueue<E> implements Queue<E> {
 
