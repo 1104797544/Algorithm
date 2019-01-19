@@ -14,10 +14,11 @@ public class LoopQueue<E> implements Queue<E> {
 
     private E[] data;
 
+    //指向队首元素
     private int front = 0;
-
+    //指向队尾元素的下一个位置
     private int tail = 0;
-
+    //队列元素数量
     private int size = 0;
 
     public LoopQueue(int capacity) {
@@ -44,7 +45,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     @Override
     public void enqueue(E e) {
-        if ((tail + 1) % data.length == front) {
+         if ((tail + 1) % data.length == front) {
             resize(getCapacity() * 2);
         }
         data[tail] = e;
@@ -55,7 +56,7 @@ public class LoopQueue<E> implements Queue<E> {
     public void resize(int capacity) {
         E[] newData = (E[]) new Object[capacity];
         for (int i = 0; i < size; i++) {
-            newData[i] = data[(front + 1) % data.length];
+            newData[i] = data[(front + i) % data.length];
         }
         data = newData;
         front = 0;
@@ -83,6 +84,11 @@ public class LoopQueue<E> implements Queue<E> {
         return data[front];
     }
 
+    //获取队尾元素
+    public E getTail() {
+        return data[(tail - 1 + data.length) % data.length];
+    }
+
     @Override
     public String toString() {
         StringBuilder queue = new StringBuilder();
@@ -90,7 +96,7 @@ public class LoopQueue<E> implements Queue<E> {
         queue.append(String .format("front = %d, tail = %d\n", front, tail));
         queue.append("[");
         for (int i = front; i != tail; i = (i + 1) % data.length) {
-            queue.append(i);
+            queue.append(data[i]);
             if ((i + 1) % data.length != tail) {
                 queue.append(",");
             }
