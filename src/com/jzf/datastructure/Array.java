@@ -120,7 +120,7 @@ public class Array<E> {
         return false;
     }
 
-    public E removeFirst(int index) {
+    public E removeFirst() {
         return remove(0);
     }
 
