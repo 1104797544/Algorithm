@@ -1,5 +1,8 @@
 package com.jzf.datastructure.Interface;
 
+/**
+ *队列接口
+ */
 public interface Queue<E> {
 
     boolean isEmpty();
