@@ -129,15 +129,17 @@ public class BinarySearchTree<E extends Comparable<E>> {
     private void preOrderNR(Node node) {
         Stack<Node> stack = new Stack<>();
 
-        stack.push(root);
+        if (root != null) {
+            stack.push(root);
+        }
         while (!stack.isEmpty()) {
             Node cur = stack.pop();
             System.out.println(cur.e);
 
+            //左右结点分别入栈
             if (cur.right != null) {
                 stack.push(cur.right);
             }
-
             if (cur.left != null) {
                 stack.push(cur.left);
             }
@@ -170,6 +172,144 @@ public class BinarySearchTree<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    //二叉树的层序遍历
+    public void levelOrder() {
+        levelOrder(root);
+    }
+
+    private void levelOrder(Node node) {
+        LinkedListQueue<Node> queue = new LinkedListQueue<>();
+
+        if (root != null) {
+            queue.enqueue(root);
+        }
+        while (!queue.isEmpty()) {
+            Node cur = queue.dequeue();
+            System.out.println(cur.e);
+
+            if (cur.left != null) {
+                queue.enqueue(cur.left);
+            }
+            if (cur.right != null) {
+                queue.enqueue(cur.right);
+            }
+        }
+    }
+
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty!");
+        }
+        return (E) minimum(root).e;
+    }
+
+    private Node minimum(Node node) {
+        if (null == node.left) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty!");
+        }
+        return (E) maximum(root).e;
+    }
+
+    private Node maximum(Node node) {
+        if (null == node.right) {
+            return node;
+        }
+        return maximum(node.right);
+    }
+
+    public E removeMin() {
+        E ret = minimum();
+        root = removeMin(root);
+        return ret;
+    }
+
+    private Node removeMin(Node node) {
+        //递归终止条件 要删除的即是最左边的结点
+        if (null == node.left) {
+            //被删除的结点可能有右子树
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        //返回左子树的根结点
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    public E removeMax() {
+        E ret = maximum();
+        root = removeMax(root);
+        return ret;
+    }
+
+    private Node removeMax(Node node) {
+        //递归终止条件 要删除的即是最右边的结点
+        if (null == node.right) {
+            //被删除的结点可能有左子树
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        //返回右子树的根结点
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    public void remove(E e) {
+        root = remove(root, e);
+    }
+
+    //删除任意元素
+    private Node remove(Node node, E e) {
+        //递归终止条件1:没有找到要删除的结点
+        if (null == node) {
+            return null;
+        }
+
+        if (e.compareTo((E) node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else if (e.compareTo((E) node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        //递归终止条件2:找到要删除的结点
+        } else {
+            //要删除的结点只有右子树 则返回右子树的根结点作为子树的根结点
+            if (null == node.left) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            //要删除的结点只有左子树 则返回左子树的根结点作为子树的根结点
+            if (null == node.right) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            //要删除的结点含有左右子树
+            //有两种方法可以解决 这里使用了方法1
+            //1:找到要删除结点的后继结点即右子树的最小结点作为子树的根结点 并返回
+            //2:找到要删除结点的前驱结点即左子树的最大结点作为子树的根结点 并返回
+            Node successor = minimum(node.right);
+            //必须先删除后继结点 才能将后继结点作为子树的根结点 顺序不能颠倒
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            node.left = node.right = null;
+            return successor;
+        }
     }
 
     @Override

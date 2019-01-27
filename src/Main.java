@@ -61,15 +61,15 @@ public class Main {
         bst.add(3);
         bst.add(1);
 
+        //bst.preOrderNR();
+        //bst.levelOrder();
         //System.out.println(bst);
-
-        //boolean a = bst.contains(21);
-
-        bst.preOrder();;
-
-        System.out.println();
-
-        bst.preOrderNR();
+        //bst.removeMin();
+        //System.out.println(bst);
+        //bst.removeMax();
+        //System.out.println(bst);
+        bst.remove(10);
+        System.out.println(bst);
 
     }
 }
