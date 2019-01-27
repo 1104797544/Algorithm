@@ -1,3 +1,4 @@
+import com.jzf.datastructure.BinarySearchTree;
 import com.jzf.datastructure.LindedList;
 import com.jzf.datastructure.LinkedListQueue;
 import com.jzf.datastructure.LoopQueue;
@@ -43,15 +44,32 @@ public class Main {
         String a = "aaa";
         a.substring(0, a.length() - 1);*/
 
-        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+/*        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
         for (int i = 0; i < 10; i ++)
             linkedListQueue.enqueue(i);
         System.out.println(linkedListQueue);
         linkedListQueue.dequeue();
         System.out.println(linkedListQueue);
         linkedListQueue.dequeue();
-        System.out.println(linkedListQueue);
+        System.out.println(linkedListQueue);*/
 
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.add(10);
+        bst.add(2);
+        bst.add(12);
+        bst.add(20);
+        bst.add(3);
+        bst.add(1);
+
+        //System.out.println(bst);
+
+        //boolean a = bst.contains(21);
+
+        bst.preOrder();;
+
+        System.out.println();
+
+        bst.preOrderNR();
 
     }
 }
