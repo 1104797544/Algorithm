@@ -2,6 +2,7 @@ import com.jzf.datastructure.LindedList;
 import com.jzf.datastructure.LinkedListQueue;
 import com.jzf.datastructure.LoopQueue;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Main {
@@ -31,11 +32,23 @@ public class Main {
         System.out.println(lindedList);
         lindedList.remove(0);
         System.out.println(lindedList);*/
-        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+/*        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
         for (int i = 0; i < 5; i ++) {
             linkedListQueue.enqueue(i);
             System.out.println(linkedListQueue);
         }
+        linkedListQueue.dequeue();
+        System.out.println(linkedListQueue);
+
+        String a = "aaa";
+        a.substring(0, a.length() - 1);*/
+
+        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+        for (int i = 0; i < 10; i ++)
+            linkedListQueue.enqueue(i);
+        System.out.println(linkedListQueue);
+        linkedListQueue.dequeue();
+        System.out.println(linkedListQueue);
         linkedListQueue.dequeue();
         System.out.println(linkedListQueue);
 
