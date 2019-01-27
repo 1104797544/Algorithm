@@ -63,4 +63,17 @@ public class RemoveLinkedListElements {
         return dummyHead.next;
     }
 
+    //3.使用递归
+    public ListNode removeElements3(ListNode head, int val) {
+        if (head == null) {
+            return null;
+        }
+        head.next = removeElements3(head.next, val);
+        if (head.val == val) {
+            return head.next;
+        } else {
+            return head;
+        }
+    }
+
 }
