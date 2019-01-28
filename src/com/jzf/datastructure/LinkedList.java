@@ -1,14 +1,12 @@
 package com.jzf.datastructure;
 
-import org.omg.CORBA.NO_IMPLEMENT;
-
 /**
  * @author JiaZhengfeng
  * @version 1.0
  * @CreateDate 2019/1/21
  * @see com.jzf.datastructure
  */
-public class LindedList<E> {
+public class LinkedList<E> {
 
     //虚拟头结点
     private Node dummyHead;
@@ -42,7 +40,7 @@ public class LindedList<E> {
         }
     }
 
-    public LindedList() {
+    public LinkedList() {
         this.dummyHead = new Node();
         size = 0;
     }

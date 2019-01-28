@@ -1,12 +1,12 @@
 package com.jzf.datastructure;
 
-
-import javax.annotation.Resource;
 import java.util.Stack;
 
 /**
  * 二叉搜索树的实现
- *
+ * 高度h 元素总数n
+ * 则2^h - 1 = n(满二叉树)
+ * 增、删、查的时间复杂度 评价O(logn) 最差O(n)
  * @author JiaZhengfeng
  * @version 1.0
  * @CreateDate 2019/1/27
@@ -39,11 +39,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
         size = 0;
     }
 
-    private int getSize() {
+    public int getSize() {
         return size;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return size == 0;
     }
 
