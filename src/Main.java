@@ -1,15 +1,23 @@
-import com.jzf.datastructure.BinarySearchTree;
-import com.jzf.datastructure.LindedList;
-import com.jzf.datastructure.LinkedListQueue;
-import com.jzf.datastructure.LoopQueue;
+import com.jzf.datastructure.*;
 
-import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Random;
 import java.util.Set;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        MaxHeap<Integer> heap = new MaxHeap<>();
+        int n = 100;
+        Random random = new Random();
+        for (int i = 0; i < n; i++) {
+            heap.add(random.nextInt(100));
+        }
+        for (int i = 0; i < heap.getSize(); i++) {
+            System.out.println(heap.extractMax());
+        }
 /*        LoopQueue<Integer> queue = new LoopQueue<>();
         for (int i = 0; i < 10; i++)
             queue.enqueue(i);
@@ -54,13 +62,13 @@ public class Main {
         linkedListQueue.dequeue();
         System.out.println(linkedListQueue);*/
 
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+/*        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         bst.add(10);
         bst.add(2);
         bst.add(12);
         bst.add(20);
         bst.add(3);
-        bst.add(1);
+        bst.add(1);*/
 
         //bst.preOrderNR();
         //bst.levelOrder();
@@ -69,9 +77,10 @@ public class Main {
         //System.out.println(bst);
         //bst.removeMax();
         //System.out.println(bst);
-        bst.remove(10);
-        System.out.println(bst);
+        //bst.remove(10);
+        //System.out.println(bst);
         //Set
+        //PriorityQueue
 
     }
 }

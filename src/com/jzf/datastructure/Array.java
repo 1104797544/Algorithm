@@ -17,6 +17,14 @@ public class Array<E> {
         size = 0;
     }
 
+    public Array(E[] array) {
+        data = (E[]) new Object[array.length];
+        for (int i =0; i < data.length; i++) {
+            data[i] = array[i];
+        }
+        size = data.length;
+    }
+
     public Array() {
         this(10);
     }
@@ -31,6 +39,16 @@ public class Array<E> {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public void swap(int i, int j) {
+        if (i < 0 || i > size || j < 0 || j > size) {
+            throw new IllegalArgumentException("Swap Faild.");
+        }
+
+        E temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
     }
 
     private void resize(int capacity) {
