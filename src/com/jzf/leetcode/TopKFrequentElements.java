@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 /**
- * 前K个高频元素
+ * LeetCode 347 前K个高频元素
  * 思路:1.先用TreeMap存储元素与元素出现的次数(元素值为key,出现次数为value)
  *     2.维护一个长度为k的优先队列(按照出现次数排列,队列中次数最少的排在队首)
  *     3.将元素TreeMap中的元素依次入队(如果队列长度达到k,则需要将元素与队首的元素进行比较，若大于队首的元素则入队 否则不入队)
