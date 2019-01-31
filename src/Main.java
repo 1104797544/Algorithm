@@ -1,4 +1,5 @@
 import com.jzf.datastructure.*;
+import com.jzf.other.Merger;
 
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -9,7 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MaxHeap<Integer> heap = new MaxHeap<>();
+        Integer[] nums = {-2,0,3,-5,2,1};
+        SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, new Merger<Integer>() {
+            @Override
+            public Integer merger(Integer e1, Integer e2) {
+                return e1 + e2;
+            }
+        });
+        int res = segmentTree.query(0,1);
+        int res2 = segmentTree.query(1,4);
+        int res3 = segmentTree.query(0, 5);
+        System.out.println(res +" " + res2 + " " + res3);
+
+/*        MaxHeap<Integer> heap = new MaxHeap<>();
         int n = 100;
         Random random = new Random();
         for (int i = 0; i < n; i++) {
@@ -17,7 +30,7 @@ public class Main {
         }
         for (int i = 0; i < heap.getSize(); i++) {
             System.out.println(heap.extractMax());
-        }
+        }*/
 /*        LoopQueue<Integer> queue = new LoopQueue<>();
         for (int i = 0; i < 10; i++)
             queue.enqueue(i);
