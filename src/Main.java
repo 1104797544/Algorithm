@@ -1,4 +1,6 @@
 import com.jzf.datastructure.*;
+import com.jzf.leetcode.LongestCommonPrefix;
+import com.jzf.leetcode.ReverseInteger;
 import com.jzf.other.Merger;
 
 import java.util.PriorityQueue;
@@ -10,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Integer[] nums = {-2,0,3,-5,2,1};
+/*        Integer[] nums = {-2,0,3,-5,2,1};
         SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, new Merger<Integer>() {
             @Override
             public Integer merger(Integer e1, Integer e2) {
@@ -21,6 +23,14 @@ public class Main {
         int res2 = segmentTree.query(1,4);
         int res3 = segmentTree.query(0, 5);
         System.out.println(res +" " + res2 + " " + res3);
+*/
+/*        ReverseInteger reverseInteger = new ReverseInteger();
+        int a = reverseInteger.reverse(1534236469);
+        System.out.println(a);*/
+        String[] strs = {"c", "c"};
+        String rs = new LongestCommonPrefix().longestCommonPrefix(strs);
+        System.out.println(rs);
+
 
 /*        MaxHeap<Integer> heap = new MaxHeap<>();
         int n = 100;
