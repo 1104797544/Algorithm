@@ -1,7 +1,5 @@
 package com.jzf.datastructure.Interface;
 
-import java.lang.management.BufferPoolMXBean;
-
 /**
  * 集合接口
  */
