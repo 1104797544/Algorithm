@@ -5,11 +5,12 @@ public class Main {
     public static void main(String[] args) {
 
         SingleLinkedList<Integer> singleLinkedList = new SingleLinkedList<>();
-        singleLinkedList.add(1);
-        singleLinkedList.add(2);
-        singleLinkedList.add(3);
-
-        singleLinkedList.contains(5);
+        singleLinkedList.addFirst(1);
+        singleLinkedList.addFirst(2);
+        singleLinkedList.addFirst(3);
+        singleLinkedList.add(0, 5);
+        singleLinkedList.traverse();
+        //singleLinkedList.contains(5);
 
 
 /*        Integer[] nums = {-2,0,3,-5,2,1};

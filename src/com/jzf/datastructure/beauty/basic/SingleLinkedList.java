@@ -1,5 +1,7 @@
 package com.jzf.datastructure.beauty.basic;
 
+import java.util.Stack;
+
 /**
  * <Description> <br>
  *
@@ -29,6 +31,10 @@ public class SingleLinkedList<E> {
         this.sentinel = new Node<>();
         this.head.next = sentinel;
         addFirst(node);
+    }
+
+    public void add(int i, E data) {
+        add(i, new Node<>(data, null));
     }
 
     /**
@@ -84,9 +90,7 @@ public class SingleLinkedList<E> {
      * @param i
      */
     public void remove(int i) {
-        if (length == 0 || i < 0 || i >= length) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
+        checkIndex(i);
 
         if (i == 0) {
             removeFirst();
@@ -130,6 +134,16 @@ public class SingleLinkedList<E> {
            p = p.next;
         }
         return has;
+    }
+
+    public void reverse() {
+        Stack<Node> stack = new Stack<>();
+        Node<E> p = this.head.next;
+
+        while (p != null) {
+
+        }
+
     }
 
     /**
@@ -189,9 +203,7 @@ public class SingleLinkedList<E> {
      * @return
      */
     private Node<E> getNode(int i) {
-        if (length == 0 || i < 0 || i >= length) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
+        checkIndex(i);
         Node<E> p = this.head.next;
         int j = 0;
         while (j != i) {
@@ -202,14 +214,29 @@ public class SingleLinkedList<E> {
     }
 
     /**
+     * 将结点插入索引为i的位置
+     * @param i
+     * @param node
+     */
+    private void add(int i, Node<E> node) {
+        checkIndex(i);
+        Node<E> p = this.sentinel;
+        int j = 0;
+        if (j != i) {
+            p = p.next;
+        }
+        node.next = p.next;
+        p.next = node;
+    }
+
+    /**
      * 插入第一个位置
      * 先将原来的第一个保存,再将哨兵指向新插入的第一个,再将新插入的第一个指向原来的第一个
      * @param node
      */
     private void addFirst(Node node) {
-        Node<E> temp = this.sentinel.next;
+        node.next = this.sentinel.next;
         this.sentinel.next = node;
-        node.next = temp;
         ++length;
     }
 
@@ -228,6 +255,12 @@ public class SingleLinkedList<E> {
         ++length;
     }
 
+    private void checkIndex(int i) {
+        if (length == 0 || i < 0 || i >= length) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+    }
+
     public int size() {
         return length;
     }
@@ -235,6 +268,7 @@ public class SingleLinkedList<E> {
     public boolean isEmpty() {
         return (length == 0);
     }
+
 
     class Node<E> {
 
